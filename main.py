@@ -106,11 +106,11 @@ class DirectedGraph:
             with open(filename,"r") as f:
                 args = f.readline()
                 args = [x.strip() for x in args]
-                while args[1]:
-                    item = f.readline().strip()
-                    item = [x.strip() fot x in item]
-                    graph.addEdge(int(item[0]),int(item[1]),int(item[2]))
-                    args[1]-=1;
+                for line in f:
+                    item = line.strip()
+                    item = item.split(" ")
+                    item = [x.strip() for x in item]
+                    self.addEdge(int(item[0]),int(item[1]),int(item[2]))
                     
                 
 
@@ -125,8 +125,6 @@ def main():
         print(graph.getCost(0,1))
         graph.setCost(0,1,-400)
         print(graph.getCost(0,1))
-
-
 
 
 main()
